@@ -1,15 +1,17 @@
-"use client"
+'use client';
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
+type Step = "greeting" | "ready" | "video" | "main";
+
 export default function Home() {
   const searchParams = useSearchParams();
   const startParam = searchParams.get("start");
 
-  const [step, setStep] = useState<"greeting" | "ready" | "video" | "main">(
+  const [step, setStep] = useState<Step>(
     startParam === "main" ? "main" : "greeting"
   );
 
@@ -38,7 +40,6 @@ export default function Home() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <AnimatePresence>
-        {/* Step 1: Greeting */}
         {step === "greeting" && (
           <motion.div
             key="greeting"
@@ -53,7 +54,6 @@ export default function Home() {
           </motion.div>
         )}
 
-        {/* Step 2: Ready Screen (Tap to Start) */}
         {step === "ready" && (
           <motion.div
             key="ready"
@@ -75,7 +75,6 @@ export default function Home() {
           </motion.div>
         )}
 
-        {/* Step 3: Video */}
         {step === "video" && (
           <motion.div
             key="video"
@@ -97,7 +96,6 @@ export default function Home() {
           </motion.div>
         )}
 
-        {/* Step 4: Main content */}
         {step === "main" && (
           <motion.section
             key="main"
