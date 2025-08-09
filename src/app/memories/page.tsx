@@ -8,12 +8,12 @@ export default function Memories() {
     const router = useRouter();
 
     const allImages = [
-        "/images/Image3.jpg",
-        "/images/Image2.jpg",
-        "/images/Image1.jpg",
-        "/images/Image4.jpg",
-        "/images/Image6.jpg",
-        "/images/Image5.jpg",
+        "/Images/Image3.jpg",
+        "/Images/Image2.jpg",
+        "/Images/Image1.jpg",
+        "/Images/Image4.jpg",
+        "/Images/Image6.jpg",
+        "/Images/Image5.jpg",
     ];
 
     const [images, setImages] = useState(allImages);
