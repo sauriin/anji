@@ -3,27 +3,24 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const startParam = searchParams.get("start");
-
   const [step, setStep] = useState<"greeting" | "ready" | "video" | "main">(
-    startParam === "main" ? "main" : "greeting"
+    "greeting"
   );
-
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Greeting → Ready (Tap screen)
   useEffect(() => {
     if (step === "greeting") {
       const timer = setTimeout(() => {
         setStep("ready");
-      }, 2000);
+      }, 2000); // greeting shows 2s
       return () => clearTimeout(timer);
     }
   }, [step]);
 
+  // Play video with sound when tapped
   const handleStart = () => {
     setStep("video");
     setTimeout(() => {
@@ -48,7 +45,7 @@ export default function Home() {
             exit={{ opacity: 0, backgroundColor: "#ffffff" }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-4xl font-bold text-pink-600">Hi Anji ❤️</h1>
+            <h1 className="text-4xl font-bold text-pink-600">Hi Didi ❤️</h1>
             <p className="mt-2 text-lg text-gray-700">This is your surprise</p>
           </motion.div>
         )}
